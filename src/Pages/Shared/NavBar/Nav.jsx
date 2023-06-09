@@ -15,6 +15,10 @@ const Nav = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
+      <li>
+        <Link to="/dashboard">Dashboard</Link>
+      </li>
+
       
       
       
@@ -23,12 +27,12 @@ const Nav = () => {
       {user ? (
         <>
           <span>{user?.displayName}</span>
+          <img className="h-10 rounded-full" src={user?.photoURL} alt="dfgfg" />
           <li>
             <button onClick={handleLogOut} className="btn btn-ghost">
               LogOut
             </button>
           </li>
-          <img src={user?.photoURL} alt="" />
         </>
       ) : (
         <>

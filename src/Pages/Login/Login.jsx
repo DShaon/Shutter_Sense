@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
-
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -37,7 +37,6 @@ const Login = () => {
 
   return (
     <>
-     
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col md:flex-row-reverse">
           <div className="text-center md:w-1/2 lg:text-left">
@@ -91,6 +90,7 @@ const Login = () => {
                 New Here? <Link to="/signup">Create an account</Link>{" "}
               </small>
             </p>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

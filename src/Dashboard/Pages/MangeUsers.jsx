@@ -6,10 +6,44 @@ const MangeUsers = () => {
     return res.json();
   });
 
+  // make admin
+  const handleMakeAdmin = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/users/admin/${id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          alert("MAke admin done"); // TODO swal add korbo
+        }
+      });
+  };
+
+  // make teacher
+  const handleMakeTeacher = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/users/teacher/${id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          alert("Make teacher done"); // TODO swal add korbo
+        }
+      });
+  };
+
   const handleUserDelete = () => {};
   return (
-    <div>
-      <h1 className="text-center text-2xl font-bold mb-5 ">Total Users {users.length}</h1>
+    <div className="w-full">
+      <h1 className="text-center text-2xl font-bold mb-5 ">
+        Total Users {users.length}
+      </h1>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
@@ -28,10 +62,18 @@ const MangeUsers = () => {
                 <th>{index + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>Student</td>
+                <td>{user.role}</td>
                 <td className="flex flex-col text-xs gap-1">
-                  <button className="border rounded-md p-1">Make Admin</button>
-                  <button className="border rounded-md p-1">
+                  <button
+                    onClick={() => handleMakeAdmin(user._id)}
+                    className="border rounded-md p-1"
+                  >
+                    Make Admin
+                  </button>
+                  <button
+                    onClick={() => handleMakeTeacher(user._id)}
+                    className="border rounded-md p-1"
+                  >
                     Make Teacher
                   </button>
                   <button

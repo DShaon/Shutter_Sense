@@ -1,8 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
+import useTeacher from "../hooks/useTeacher";
 
 const Dashboard = () => {
-  // TODO
-  const userRole = "admin";
+  const [isAdmin, isAdminLoading] = useAdmin();
+  const [isTeacher, isTeacherLoading] = useTeacher();
+
+  console.log(isTeacher);
 
   return (
     <div>
@@ -24,7 +28,31 @@ const Dashboard = () => {
           <ul className="menu p-4 w-80 h-full bg-base-300 text-base-content">
             {/* Sidebar content here */}
 
-            {userRole === "student" && (
+            {isTeacher ? (
+              <>
+                <li>
+                  <a>Teacher</a>
+                </li>
+                <li>
+                  <a>Add Class</a>
+                </li>
+                <li>
+                  <a>My Classes</a>
+                </li>
+              </>
+            ) : isAdmin ? (
+              <>
+                <li>
+                  <a>Admin</a>
+                </li>
+                <li>
+                  <a>Manage Classes</a>
+                </li>
+                <li>
+                  <Link to="/dashboard/users">Manage User</Link>
+                </li>
+              </>
+            ) : (
               <>
                 <li>
                   <a>Student</a>
@@ -40,32 +68,7 @@ const Dashboard = () => {
                 </li>
               </>
             )}
-            {userRole === "teacher" && (
-              <>
-                <li>
-                  <a>Teacher</a>
-                </li>
-                <li>
-                  <a>Add Class</a>
-                </li>
-                <li>
-                  <a>My Classes</a>
-                </li>
-              </>
-            )}
-            {userRole === "admin" && (
-              <>
-                <li>
-                  <a>Admin</a>
-                </li>
-                <li>
-                  <a>Manage Classes</a>
-                </li>
-                <li>
-                  <Link to="/dashboard/users"> Manage User</Link>
-                </li>
-              </>
-            )}
+
             <div className="divider"></div>
           </ul>
         </div>

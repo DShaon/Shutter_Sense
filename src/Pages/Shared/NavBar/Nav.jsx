@@ -16,13 +16,11 @@ const Nav = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
+        <Link to="/classes/approved">Classes</Link>
+      </li>
+      <li>
         <Link to="/dashboard">Dashboard</Link>
       </li>
-
-      
-      
-      
-     
 
       {user ? (
         <>
@@ -74,6 +72,7 @@ const Nav = () => {
               {navOptions}
             </ul>
           </div>
+          <img className=" h-12" src="/public/newlogo.png" alt="" />
           <a className="btn btn-ghost normal-case text-xl">Summer Camp</a>
         </div>
         <div className="navbar-center hidden lg:flex">

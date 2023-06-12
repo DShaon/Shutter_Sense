@@ -1,12 +1,14 @@
 import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useTeacher from "../hooks/useTeacher";
+import useStudent from "../hooks/useStudent";
 
 const Dashboard = () => {
-  const [isAdmin, isAdminLoading] = useAdmin();
-  const [isTeacher, isTeacherLoading] = useTeacher();
+  const [isAdmin ] = useAdmin();
+  const [isTeacher ] = useTeacher();
+  const [isStudent ] = useStudent();
 
-  console.log(isTeacher);
+  console.log(isStudent)
 
   return (
     <div>
@@ -23,7 +25,7 @@ const Dashboard = () => {
             Open drawer
           </label>
         </div>
-        <div className="drawer-side ">
+        <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-base-300 text-base-content">
             {/* Sidebar content here */}
@@ -34,10 +36,10 @@ const Dashboard = () => {
                   <a>Teacher</a>
                 </li>
                 <li>
-                  <a>Add Class</a>
+                  <Link to="/dashboard/addclass">Add A Class</Link>
                 </li>
                 <li>
-                  <a>My Classes</a>
+                  <Link to="/dashboard/myclass">My Classes</Link>
                 </li>
               </>
             ) : isAdmin ? (
@@ -46,28 +48,28 @@ const Dashboard = () => {
                   <a>Admin</a>
                 </li>
                 <li>
-                  <a>Manage Classes</a>
+                  <Link to="/dashboard/manageclass">Manage Classes</Link>
                 </li>
                 <li>
                   <Link to="/dashboard/users">Manage User</Link>
                 </li>
               </>
-            ) : (
+            ) : isStudent ? (
               <>
                 <li>
                   <a>Student</a>
                 </li>
                 <li>
-                  <a>Payment</a>
+                  <Link to="/dashboard/payment">Payment</Link>
                 </li>
                 <li>
-                  <a>My Selected Classes</a>
+                  <Link to="/dashboard/selectedclasses">My Selected Classes</Link>
                 </li>
                 <li>
-                  <a>My Enrolled Classes</a>
+                  <Link to="/dashboard/enrolledclasses">My Enrolled Classes</Link>
                 </li>
               </>
-            )}
+            ) : null}
 
             <div className="divider"></div>
           </ul>

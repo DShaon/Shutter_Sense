@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <div className="relative">
   
       <div
-        className="inset-0 fixed"
+        className="inset-0 fixed bg-black"
         style={{
           backgroundImage: "url('https://i.ibb.co/PtcJqLn/1920902.jpg')",
           backgroundSize: "cover",
@@ -25,8 +25,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         }}
       ></div>
       <div className="relative ">
-          <RouterProvider router={router} />
         
+          <RouterProvider router={router} />
       </div>
     </div>
 

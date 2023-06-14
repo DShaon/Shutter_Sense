@@ -42,6 +42,7 @@ const AddClass = () => {
             instructorName,
             instructorEmail,
             availableSeats: parseInt(availableSeats),
+            instructorImg:user.photoURL
           };
 
           axiosSecure

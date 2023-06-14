@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const PopularClasses = () => {
+const PopularInstructor = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
@@ -20,10 +20,9 @@ const PopularClasses = () => {
 
     fetchData();
   }, []);
-  console.log(classes);
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">Popular Classes</h1>
+      <h1 className="text-2xl font-bold mb-4">Popular Instructor</h1>
       <div className="grid grid-cols-3 gap-4">
         {classes.slice(0, 6).map((classItem) => (
           <div
@@ -57,7 +56,9 @@ const PopularClasses = () => {
             </div>
             <div className="border-b border-gray-400 mt-6 mb-4 mx-1"></div>
 
-            <button className=" glass w-full text-white font-semibold py-3 rounded-md hover:shadow-lg ">View Class</button>
+            <button className=" glass w-full text-white font-semibold py-3 rounded-md hover:shadow-lg ">
+              View Class
+            </button>
           </div>
         ))}
       </div>
@@ -65,4 +66,4 @@ const PopularClasses = () => {
   );
 };
 
-export default PopularClasses;
+export default PopularInstructor;

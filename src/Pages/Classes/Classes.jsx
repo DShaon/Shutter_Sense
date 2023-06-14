@@ -83,7 +83,7 @@ const Classes = () => {
             <img
               src={classItem.image}
               alt={classItem.name}
-              className="w-full h-40 object-cover mb-2 rounded-lg"
+              className="w-full h-80 object-cover mb-2 rounded-lg"
             />
             <p className="font-bold">{classItem.name}</p>
             <p className="text-gray-600">

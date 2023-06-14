@@ -39,7 +39,7 @@ const BSlider = () => {
           clickable: true,
         }}
         modules={[FreeMode, Pagination, EffectCards]}
-        className="mySwiper  rounded-xl w-[500px]"
+        className="mySwiper  rounded-xl w-[500px] "
       >
         {slider.map((img, index) => (
           <SwiperSlide key={index}>

@@ -20,43 +20,62 @@ const PopularInstructor = () => {
 
     fetchData();
   }, []);
+
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Popular Instructor</h1>
-      <div className="grid grid-cols-3 gap-4">
-        {classes.slice(0, 6).map((classItem) => (
+    <div className="">
+      <div className="mb-16 mt-28">
+        <h1 className="text-4xl font-bold mb-6 text-center text-white">
+          Meet Our Talented Photography Instructors
+        </h1>
+        <p className="  text-justify text-white">
+          Get inspired by our top 6 photography instructors who bring a wealth
+          of experience and expertise to our photography school. Each instructor
+          has a unique style and approach, ensuring a diverse learning
+          experience for our students. Learn from the best in the industry and
+          unlock your creative potential under their guidance. Explore their
+          portfolios and join their classes to embark on an exciting photography
+          journey!
+        </p>
+      </div>
+      <div className="grid md:grid-cols-4 gap-4  items-center">
+        {classes.slice(0, 8).map((classItem) => (
           <div
             key={classItem._id}
-            className="p-2 border rounded-lg shadow-lg bg-opacity-50 backdrop-blur-md"
+            className="w-4/5 border rounded-xl shadow-lg bg-opacity-50 backdrop-blur-md relative mx-auto"
           >
             <img
               src={classItem.image}
               alt={classItem.name}
-              className="w-full h-80 object-cover mb-2 rounded-lg"
+              className="w-full h-48 object-cover mb-2 rounded-t-xl shadow-lg"
             />
-            <p className="font-bold text-xl text-white">{classItem.name}</p>
-            <div className="flex items-center justify-between ">
-              <div className="flex items-center gap-2 mt-4 -space-y-2 ">
-                <img
-                  className="h-9 rounded-md shadow-lg"
-                  src={classItem.instructorImg}
-                  alt=""
-                />
-                <div className="flex flex-col -space-y-1 ">
-                  <p className="text-white font-bold drop-shadow-lg">
-                    {classItem.instructorName}
-                  </p>
-                  <p className="text-xs text-slate-200 ">#Instructor</p>
-                </div>
-              </div>
-              <p className="text-white text-xs ">
-                {" "}
-                <br /> {classItem.enrollCount} <br /> Students
-              </p>
-            </div>
-            <div className="border-b border-gray-400 mt-6 mb-4 mx-1"></div>
 
-            <button className=" glass w-full text-white font-semibold py-3 rounded-md hover:shadow-lg ">
+            <img
+              className="h-32 rounded-full shadow-lg absolute top-48 left-1/2 transform -translate-x-1/2 -translate-y-1/2  p-[2px] "
+              src={classItem.instructorImg}
+              alt=""
+            />
+
+            <div className="flex flex-col -space-y-1 mt-16 text-center">
+              <p className="text-white font-bold drop-shadow-lg">
+                {classItem.instructorName}
+              </p>
+              <p className="text-xs text-slate-200">#Instructor</p>
+            </div>
+            <div className="flex  items-center justify-between mx-14 mt-6">
+              <div className="text-center">
+                <p className="text-white text-xl font-bold">12</p>
+                <p className="text-slate-200 text-xs">Class Taken</p>
+              </div>
+
+              <div className="text-center">
+                <p className="text-white text-xl font-bold">
+                  {classItem.enrollCount}
+                </p>
+                <p className="text-slate-200 text-xs">Enrolled Students</p>
+              </div>
+            </div>
+
+            <button className="glass w-full text-white font-semibold py-3 rounded-md hover:shadow-lg mt-5">
               View Class
             </button>
           </div>

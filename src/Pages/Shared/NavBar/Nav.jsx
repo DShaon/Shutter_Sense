@@ -21,8 +21,8 @@ const Nav = () => {
       <li>
         <Link
           to="/"
-          className={`nav-link ${
-            activeButton === "home" ? "active border" : ""
+          className={`border ${
+            activeButton === "home" ? "active" : ""
           }`}
           onClick={() => handleButtonClick("home")}
         >
@@ -31,8 +31,19 @@ const Nav = () => {
       </li>
       <li>
         <Link
+          to="/"
+          className={`border ${
+            activeButton === "instructor" ? "active" : ""
+          }`}
+          onClick={() => handleButtonClick("instructor")}
+        >
+          Instructor
+        </Link>
+      </li>
+      <li>
+        <Link
           to="/classes/approved"
-          className={`nav-link ${activeButton === "classes" ? "active" : ""}`}
+          className={`border ${activeButton === "classes" ? "active" : ""}`}
           onClick={() => handleButtonClick("classes")}
         >
           Classes
@@ -41,7 +52,7 @@ const Nav = () => {
       <li>
         <Link
           to="/dashboard"
-          className={`nav-link ${activeButton === "dashboard" ? "active" : ""}`}
+          className={`border ${activeButton === "dashboard" ? "active" : ""}`}
           onClick={() => handleButtonClick("dashboard")}
         >
           Dashboard
@@ -73,15 +84,15 @@ const Nav = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-black rounded-box w-52"
+              className="flex gap-2 menu menu-compact  dropdown-content mt-3 p-2 shadow backdrop-blur-md border bg-black bg-opacity-75 rounded-box w-52"
             >
               {navOptions}
             </ul>
           </div>
-          <img className=" h-12" src="/public/newlogo.png" alt="" />
+          <p className="text-3xl font-bold">ShutterSense</p>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navOptions}</ul>
+        <div className="navbar-center hidden lg:flex ">
+          <ul className="flex gap-4 menu menu-horizontal px-1">{navOptions}</ul>
         </div>
         <div className="navbar-end">
           {user ? (
@@ -102,9 +113,11 @@ const Nav = () => {
             </>
           ) : (
             <>
-              <Link className="border" to="/login">Login</Link>
+              <Link className=" border bg-white hover:bg-black bg-opacity-10  backdrop-blur-md px-5 py-2 rounded-2xl " to="/login">
+                Login
+              </Link>
 
-              <Link className="border" to="/signup">SugnUp</Link>
+            
             </>
           )}
         </div>

@@ -23,7 +23,18 @@ const PopularClasses = () => {
   console.log(classes);
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">Popular Classes</h1>
+      <div className="mb-16 mt-28">
+        <h1 className="text-4xl font-bold mb-6 text-center text-white">
+          Popular Photography Classes for Every Skill Level
+        </h1>
+        <p className="  text-justify text-white">
+          Discover our top 6 photography classes that cater to beginners and
+          seasoned photographers alike. Explore the art of composition, master
+          lighting techniques, and learn to capture stunning images in any
+          setting. Join our community of photography enthusiasts and elevate
+          your skills to new heights. Start your creative journey today!
+        </p>
+      </div>
       <div className="grid grid-cols-3 gap-4">
         {classes.slice(0, 6).map((classItem) => (
           <div
@@ -57,7 +68,9 @@ const PopularClasses = () => {
             </div>
             <div className="border-b border-gray-400 mt-6 mb-4 mx-1"></div>
 
-            <button className=" glass w-full text-white font-semibold py-3 rounded-md hover:shadow-lg ">View Class</button>
+            <button className=" glass w-full text-white font-semibold py-3 rounded-md hover:shadow-lg ">
+              View Class
+            </button>
           </div>
         ))}
       </div>

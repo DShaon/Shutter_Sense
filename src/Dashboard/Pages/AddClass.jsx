@@ -65,9 +65,7 @@ const AddClass = () => {
               // Handle the error or show an error message
             });
         }
-        
       });
-      
   };
 
   return (

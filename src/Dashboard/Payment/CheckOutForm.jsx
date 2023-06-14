@@ -60,14 +60,54 @@ const CheckOutForm = ({ price, selectedItem }) => {
       setCardError(confirmError);
     }
     console.log(paymentIntent);
-    if (paymentIntent.status === "succeeded") {
-      alert("payment success");
+    if (paymentIntent.status == "succeeded") {
+      alert("Payment success");
       setTrxId(paymentIntent.id);
       const trxId = paymentIntent.id;
-      // TODO next steps
+      // TODO: Next steps after successful payment, e.g., update server-side records
       console.log(trxId);
+
+      // Send the selectedItem and trxId to the server to store in the database
+      try {
+        await axiosSecure.post("/enrolledclass", {
+          selectedItem,
+          trxId,
+        });
+        console.log("Selected item and trxId saved successfully");
+        // Add any additional steps or UI updates here
+      } catch (error) {
+        console.error("Failed to save selected item and trxId:", error);
+        // Handle error scenario
+      }
+
+      // Update enrollCount and availableSeats on the server-side
+      try {
+        await axiosSecure.patch(`/classesCart/${selectedItem._id}/success`);
+        console.log("Class item updated successfully");
+        // Add any additional steps or UI updates here
+      } catch (error) {
+        console.error("Failed to update class item:", error);
+        // Handle error scenario
+      }
+
+      // delete item after succesfull paymenr
+      fetch(`http://localhost:5000/classcart/${selectedItem._id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data.deletedCount);
+          if (data.deletedCount > 0) {
+            // TODO should add sweet alert
+            alert("item delete succes payment");
+          }
+        })
+        .catch((error) => {
+          console.error("Error deleting class item:", error);
+        });
     }
   };
+  console.log(selectedItem._id);
 
   return (
     <>

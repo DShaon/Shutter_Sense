@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 const Classes = () => {
   const { user } = useContext(AuthContext);
-  const [classes, setClasses] = useState([]);
   const [isAdmin] = useAdmin();
   const [isTeacher] = useTeacher();
   const navigate = useNavigate();
+  const [classes, setClasses] = useState([]);
   console.log(isAdmin);
 
   useEffect(() => {
@@ -27,14 +27,14 @@ const Classes = () => {
     fetchData();
   }, []);
 
-//   TODO add swal instead of alert
+  //   TODO add swal instead of alert
   const handleSelectedClass = (classItem) => {
     console.log(classItem);
     if (user) {
       const { _id, ...classItemWithoutId } = classItem; // Exclude _id field
-  
+
       classItemWithoutId.userEmail = user.email;
-  
+
       fetch("http://localhost:5000/classcart", {
         method: "POST",
         headers: {
@@ -69,12 +69,7 @@ const Classes = () => {
       navigate("/login");
     }
   };
-  
-  
-  
-  
-  
-  
+  console.log(classes)
 
   return (
     <div>
@@ -83,7 +78,7 @@ const Classes = () => {
         {classes.map((classItem) => (
           <div
             key={classItem._id}
-            className="p-4 border border-blue-500 rounded-lg"
+            className="p-4 border rounded-lg shadow-lg bg-opacity-50 backdrop-blur-md"
           >
             <img
               src={classItem.image}
